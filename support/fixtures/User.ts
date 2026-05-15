@@ -1,0 +1,38 @@
+export interface User {
+      name: string
+      username: string
+      password: string
+}
+
+export const Users = {
+      validUser: {
+            name: "Ale",
+            username: "ale",
+            password: "189231"
+      },
+      wrongPassword: {
+            name: "Ale",
+            username: "ale",
+            password: "123456"
+      },
+      userNotFound: {
+            name: "Ale",
+            username: "not-found",
+            password: "189231"
+      },
+      emptyFields: {
+            name: "Ale",
+            username: "",
+            password: ""
+      },
+      missingUsername: {
+            name: "Ale",
+            username: "",
+            password: "189231"
+      },
+      missingPassword: {
+            name: "Ale",
+            username: "ale",
+            password: ""
+      }
+}
