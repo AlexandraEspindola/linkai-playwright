@@ -1,3 +1,5 @@
+import { faker } from '@faker-js/faker';
+
 export interface User {
       name: string
       username: string
@@ -5,7 +7,16 @@ export interface User {
       password: string
 }
 
-export const Users = {
+export function getNewUser() {
+      return {
+            name: faker.person.fullName(),
+            username: faker.internet.username().replace(/[.-]/g, ''),
+            email: faker.internet.email(),
+            password: "123456"
+      }
+}
+
+export const Users = { 
       validUser: {
             name: "Ale",
             username: "ale",
