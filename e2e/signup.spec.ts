@@ -18,7 +18,8 @@ test('deve cadastrar um novo usuário com sucesso', async ({ page }) => {
     const user: User = getNewUser();
 
     await signupPage.open()
-    await signupPage.submit(user)
+    await signupPage.fill(user)
+    await signupPage.submit()
 
     // await page.waitForTimeout(5000)
 
@@ -33,15 +34,9 @@ test('não deve cadastrar quando nenhum campo é informado', async ({ page }) =>
     const signupPage = getSignupPage(page)
     const toast = getToast(page)
 
-    const user: User = {
-        name: '',
-        username: '',
-        email: '',
-        password: ''
-    }
 
     await signupPage.open()
-    await signupPage.submit(user)
+    await signupPage.submit()
 
     await expect(toast.element()).toContainText('Campos obrigatórios')
     await expect(toast.element()).toContainText('Por favor, preencha todos os campos.')

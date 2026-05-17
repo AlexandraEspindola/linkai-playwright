@@ -6,7 +6,9 @@ export function getSignupPage(page: Page) {
         open: async () => {
             await page.goto('http://localhost:3000/cadastro')
         },
-        submit: async (user: User) => {
+
+
+        fill: async (user: User) => {
             await page
                 .getByRole('textbox', { name: 'Como você gostaria de ser chamado?' })
                 .fill(user.name)
@@ -25,6 +27,9 @@ export function getSignupPage(page: Page) {
             await page
                 .getByRole('textbox', { name: 'Repita sua senha para garantir!' })
                 .fill(user.password)
+        },
+        submit: async () => {
+
 
             await page
                 .getByRole('button', { name: 'Criar conta' })
