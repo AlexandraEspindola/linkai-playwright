@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test'
+import { expect, Page } from '@playwright/test'
 import { UserSignup } from '../fixtures/User'
 
 export function getSignupPage(page: Page) {
@@ -34,6 +34,8 @@ export function getSignupPage(page: Page) {
                 .getByRole('button', { name: 'Criar conta' })
                 .click();
         },
-        emailField
+        validateEmailFieldType: async () => {
+            await expect(emailField()).toHaveAttribute('type', 'email')
+        }
     }
 }
