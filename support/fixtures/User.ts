@@ -1,11 +1,17 @@
 import { faker } from '@faker-js/faker';
 
-export interface User {
+export interface UserSignup {
       name: string
       username: string
       email: string
       password: string
       confirmPassword: string
+}
+
+export interface UserLogin {
+      name: string
+      username: string
+      password:string
 }
 
 export function getNewUser() {
@@ -23,7 +29,7 @@ export const Users = {
       validUser: {
             name: "Ale",
             username: "ale",
-            password: "123abc"
+            password: "189231"
       },
       wrongPassword: {
             name: "Ale",

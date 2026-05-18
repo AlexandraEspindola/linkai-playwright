@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test'
-import { User } from '../fixtures/User'
+import { UserSignup } from '../fixtures/User'
 
 export function getSignupPage(page: Page) {
     return {
@@ -8,7 +8,7 @@ export function getSignupPage(page: Page) {
         },
 
 
-        fill: async (user: User) => {
+        fill: async (user: UserSignup) => {
             await page
                 .getByRole('textbox', { name: 'Como você gostaria de ser chamado?' })
                 .fill(user.name)

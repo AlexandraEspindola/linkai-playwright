@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 import { getLoginPage } from "../support/pages/LoginPage";
 import { getDashPage } from "../support/pages/DashPage";
 import { getToast } from "../support/pages/components/Toast";
-import { User, Users } from "../support/fixtures/User";
+import { UserLogin, Users } from "../support/fixtures/User";
 // import Users from "../support/fixtures/Users.json"
 
 
@@ -13,7 +13,7 @@ test('deve logar com sucesso', async ({ page }) => {
       const dashPage = getDashPage(page)
       const toast = getToast(page)
 
-      const user: User = Users.validUser
+      const user: UserLogin = Users.validUser
 
       await loginPage.open()
       await loginPage.submit(user)
@@ -29,7 +29,7 @@ test('Nao deve logar com senha incorreta', async ({ page }) => {
       const loginPage = getLoginPage(page)
       const toast = getToast(page)
 
-      const user: User = Users.wrongPassword
+      const user: UserLogin = Users.wrongPassword
 
       await loginPage.open()
 
@@ -43,7 +43,7 @@ test('Nao deve logar com usuario não cadastrado', async ({ page }) => {
       const loginPage = getLoginPage(page)
       const toast = getToast(page)
 
-      const user: User = Users.userNotFound
+      const user: UserLogin = Users.userNotFound
 
       await loginPage.open()
 
@@ -63,7 +63,7 @@ test('Nao deve logar quando não informo nenhum dos campos', async ({ page }) =>
       const loginPage = getLoginPage(page)
       const toast = getToast(page)
 
-      const user: User = Users.emptyFields
+      const user: UserLogin = Users.emptyFields
 
       await loginPage.open()
 
@@ -77,7 +77,7 @@ test('Nao deve logar quando não informo o usuário', async ({ page }) => {
       const loginPage = getLoginPage(page)
       const toast = getToast(page)
 
-      const user: User = Users.missingUsername
+      const user: UserLogin = Users.missingUsername
 
       await loginPage.open()
 
@@ -91,7 +91,7 @@ test('Nao deve logar quando não informo a senha', async ({ page }) => {
       const loginPage = getLoginPage(page)
       const toast = getToast(page)
 
-      const user: User = Users.missingPassword
+      const user: UserLogin = Users.missingPassword
 
       await loginPage.open()
 

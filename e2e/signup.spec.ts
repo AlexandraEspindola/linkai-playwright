@@ -5,7 +5,7 @@ import { getDashPage } from "../support/pages/DashPage";
 import { getToast } from "../support/pages/components/Toast";
 
 // import {faker} from '@faker-js/faker';
-import { User, getNewUser } from "../support/fixtures/User";
+import { UserSignup, getNewUser } from "../support/fixtures/User";
 // import Users from "../support/fixtures/Users.json"
 
 
@@ -15,7 +15,7 @@ test('deve cadastrar um novo usuário com sucesso', async ({ page }) => {
     const dashPage = getDashPage(page)
     const toast = getToast(page)
 
-    const user: User = getNewUser();
+    const user: UserSignup = getNewUser();
 
     await signupPage.open()
     await signupPage.fill(user)
@@ -46,7 +46,7 @@ test('não deve cadastrar quando nenhum campo é informado', async ({ page }) =>
 
 test('não deve cadastrar quando o email for incorreto', async ({ page }) => {
     const signupPage = getSignupPage(page)
-    const user: User = {
+    const user: UserSignup = {
         name: 'Alex',
         username: 'Email incorreto',
         email: 'www.test.com.br',
@@ -67,7 +67,7 @@ test('não deve cadastrar quando o username é incorreto', async ({ page }) => {
     const signupPage = getSignupPage(page)
     const toast = getToast(page)
 
-    const user: User = {
+    const user: UserSignup = {
         name: 'Alex',
         username: 'Alex&Espindola',
         email: 'ale@espindola.com',
@@ -91,7 +91,7 @@ test('não deve cadastrar quando as senhas não são iguais', async ({ page }) =
     const signupPage = getSignupPage(page)
     const toast = getToast(page)
 
-    const user: User = {
+    const user: UserSignup = {
         name: 'Alex',
         username: 'Alex_Espindola',
         email: 'ale@espindola.com',
