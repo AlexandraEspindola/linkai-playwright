@@ -2,12 +2,15 @@ import { Page } from '@playwright/test'
 import { UserSignup } from '../fixtures/User'
 
 export function getSignupPage(page: Page) {
+
+    const emailField = () => {
+        return page.getByRole('textbox', { name: 'Seu melhor e-mail para receber novidades!' })
+    }
+
     return {
         open: async () => {
             await page.goto('http://localhost:3000/cadastro')
         },
-
-
         fill: async (user: UserSignup) => {
             await page
                 .getByRole('textbox', { name: 'Como você gostaria de ser chamado?' })
@@ -16,9 +19,7 @@ export function getSignupPage(page: Page) {
                 .getByRole('textbox', { name: 'Escolha um @username único (ex: superdev_123)' })
                 .fill(user.username)
 
-            await page
-                .getByRole('textbox', { name: 'Seu melhor e-mail para receber novidades!' })
-                .fill(user.email)
+            await emailField().fill(user.email)
 
             await page
                 .getByRole('textbox', { name: 'Crie uma senha secreta e segura' })
@@ -29,11 +30,10 @@ export function getSignupPage(page: Page) {
                 .fill(user.confirmPassword)
         },
         submit: async () => {
-
-
             await page
                 .getByRole('button', { name: 'Criar conta' })
                 .click();
-        }
+        },
+        emailField
     }
 }

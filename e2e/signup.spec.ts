@@ -58,8 +58,8 @@ test('não deve cadastrar quando o email for incorreto', async ({ page }) => {
     await signupPage.fill(user)
     await signupPage.submit()
 
-    const email = page.getByPlaceholder('Seu melhor e-mail para receber novidades!')
-    await expect(email).toHaveAttribute('type', 'email')
+    
+    await expect(signupPage.emailField()).toHaveAttribute('type', 'email')
 })
 
 test('não deve cadastrar quando o username é incorreto', async ({ page }) => {
