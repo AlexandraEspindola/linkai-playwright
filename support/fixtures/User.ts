@@ -5,14 +5,17 @@ export interface User {
       username: string
       email: string
       password: string
+      confirmPassword: string
 }
 
 export function getNewUser() {
+      const defaultPassword = '189231'
       return {
             name: faker.person.fullName(),
             username: faker.internet.username().replace(/[.-]/g, ''),
             email: faker.internet.email(),
-            password: "123456"
+            password: defaultPassword,
+            confirmPassword: defaultPassword
       }
 }
 
@@ -20,17 +23,17 @@ export const Users = {
       validUser: {
             name: "Ale",
             username: "ale",
-            password: "189231"
+            password: "123abc"
       },
       wrongPassword: {
             name: "Ale",
             username: "ale",
-            password: "123456"
+            password: "123abd"
       },
       userNotFound: {
             name: "Ale",
             username: "not-found",
-            password: "189231"
+            password: "123abc"
       },
       emptyFields: {
             name: "Ale",
@@ -40,7 +43,7 @@ export const Users = {
       missingUsername: {
             name: "Ale",
             username: "",
-            password: "189231"
+            password: "123abc"
       },
       missingPassword: {
             name: "Ale",
